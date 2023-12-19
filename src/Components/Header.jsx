@@ -4,7 +4,7 @@ import logo from '../assets/voxel-buster.png'
 
 const Header = () => {
   return (
-    <div className='flex justify-between items-center'>
+    <div className='flex justify-between items-center bg-'>
         <img src={logo} className="w-[100px]  " alt="img"/>
   
         <ul className='flex gap-4 md:gap-14'>
