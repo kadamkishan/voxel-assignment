@@ -1,17 +1,23 @@
-import React from 'react'
-import Header from '../Components/Header'
+import React, { useState } from 'react'
 import Search from '../Components/Search'
-import IntroPost from '../Components/IntroPost'
 import Cards from '../Components/Cards'
-import Footer from '../Components/Footer'
+import record from "../assets/startup_funding l.json";
+
 
 const Home = () => {
+  const [orgPost,setorgPost]=useState([]);
+
+  const filterPost=(tag)=>{
+    const result=record.filter(item=>item.IndustryVertical===tag)
+    setorgPost(result);
+    console.log(orgPost);
+  }
+
   return (
     <div>
       
-      <Header/>
-      <Search/>
-      <Cards/>
+      <Search selectedTag={(tag)=>filterPost(tag)}/>
+      <Cards orgPost={orgPost} />
       {/* <IntroPost/>
       <Footer/> */}
 

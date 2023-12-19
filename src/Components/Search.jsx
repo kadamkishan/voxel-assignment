@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import banner from '../assets/startup-india.jpeg';
 
-const Search = () => {
+const Search = ({selectedTag}) => {
 
   // Consumer Internet ,eCommerce ,Logistics ,Others ,Healthcare ,Food & Beverage ,Finance ,Education
 
   const tags=[
     {
       id:1,
-      name:'Consumer Internet',
+      name:'All',
     },
     {
       id:2,
@@ -37,7 +37,7 @@ const Search = () => {
     },
     {
       id:8,
-      name:'Education',
+      name:'Consumer Internet',
     }
   ]
 
@@ -55,7 +55,8 @@ const Search = () => {
       </div>
       <div className='flex gap-10 justify-center mt-5'>
          {tags.map((item,index)=>(
-          <ul key={index} onClick={()=>{setActiveIndex(index);console.log(index)}} className={`${index==activeIndex? 'bg-red-500 text-white' :null } p-1 pb-2 rounded-sm md:rounded-full cursor-pointer md:px-4 transition-all duration-100 ease-in-out`}>
+          <ul key={index} onClick={()=>{setActiveIndex(index);selectedTag(item.name)}} 
+          className={`${index===activeIndex? 'bg-red-500 text-white' :null } p-1 pb-2 rounded-sm md:rounded-full cursor-pointer md:px-4 transition-all duration-100 ease-in-out`}>
             <li>{item.name}</li>
           </ul>
          ))}

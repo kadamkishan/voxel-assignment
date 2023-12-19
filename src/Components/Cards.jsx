@@ -1,13 +1,25 @@
-import React from 'react'
-import Intropost from './IntroPost'
+import React, { useEffect, useState } from 'react'
+import imporrecords from '../assets/demo.json';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-import records from '../assets/startup_funding l.json';
-import { Navigate } from 'react-router-dom';
+const Cards = ({selectedRecord}) => {
+  const [requRecord,setRequRecord]=useState([]);
 
-const Cards = () => {
+  useEffect(()=>{
+    setRequRecord(selectedRecord);
+  },[])
+
+  if(requRecord &&requRecord.length === 0){
+   setRequRecord(imporrecords);
+  }
+
+
+
+
+  const navigate=useNavigate();
   return (
       <div className='grid gap-4 lg:grid-cols-4 p-5 mt-[5%]  '>
-      {records.map(record => (
+      {imporrecords.map(record => (
         <div className='w-full rounded-lg overflow-hidden shadow-md lg:max-w-sm bg-white p-3 flex flex-col text-xl transition-transform transform hover:scale-105' key=
         {record.SNo}>
 
@@ -31,7 +43,7 @@ const Cards = () => {
             </div>
           </div>
 
-          <button onClick={<Intropost record={record}/>}  className="px-4 py-2 text-sm text-white bg-blue-500 rounded shadow hover:bg-blue-600 transition-colors">
+          <button onClick={()=>navigate('blog-detail/'+record.SNo)}  className="px-4 py-2 text-sm text-white bg-orange-600 rounded shadow hover:bg-orange-900 transition-colors">
             Read More
           </button>
         </div>
