@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import imporrecords from '../assets/demo.json';
+import imporrecords from '../assets/startup_funding l.json';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const Cards = ({selectedRecord}) => {
